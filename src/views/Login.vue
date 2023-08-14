@@ -1,18 +1,22 @@
 <template>
 	<main class="w-full min-h-screen flex justify-center items-center">
-		<form class="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-base-200 w-1/5">
+		<!-- <LoginForm /> -->
+		<form
+			class="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-base-200 min-w-sm"
+			@submit="submit"
+		>
 			<h3 class="font-medium text-3xl text-center">Login</h3>
 			<InputForm
 				titleLabel="Email"
 				placeholder="Email"
 				typeInput="email"
-				v-model="email"
+				name="email"
 			/>
 			<InputForm
 				titleLabel="Password"
 				placeholder="Password"
 				typeInput="password"
-				v-model="password"
+				name="password"
 			/>
 
 			<div class="form-control mt-6">
@@ -24,8 +28,21 @@
 
 <script setup>
 import { ref } from "vue";
+import * as yup from "yup";
+import { useForm } from "vee-validate";
 import InputForm from "../components/InputForm.vue";
 
-const email = ref("");
-const password = ref("");
+// const email = ref("");
+// const password = ref("");
+
+const { handleSubmit } = useForm({
+	validationSchema: yup.object({
+		email: yup.string().required().email(),
+		password: yup.string().required().min(6),
+	}),
+});
+
+const submit = handleSubmit((values) => {
+	alert(JSON.stringify(values, null, 2));
+});
 </script>

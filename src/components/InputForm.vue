@@ -10,19 +10,23 @@
 			:type="typeInput"
 			:placeholder="placeholder"
 			class="input input-bordered"
-			:value="modelValue"
-			@input="$emit('update:modelValue', $event.target.value)"
+			v-model="value"
 		/>
+		<!-- @input="$emit('update:modelValue', $event.target.value)" -->
+
 		<label class="label">
-			<span class="label-text-alt text-error font-semibold text-sm">
-				Bottom Left label
-			</span>
+			<span class="label-text-alt">{{ errorMessage }}</span>
 		</label>
 	</div>
 </template>
 
 <script setup>
-import { defineProps, ref } from "vue";
-const props = defineProps(["titleLabel", "typeInput", "placeholder", "modelValue"]);
+import { useField } from "vee-validate";
+import { defineProps, ref, watch, onMounted } from "vue";
+const props = defineProps(["titleLabel", "typeInput", "placeholder", "name"]);
 const emits = defineEmits(["update:modelValue"]);
+
+const { value, errorMessage } = useField(() => {
+	props.name;
+});
 </script>
