@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
-import Vuelidate from "vuelidate";
+// import Vuelidate from "vuelidate";
 import { router } from "./routes";
 
-createApp(App).use(Vuelidate).use(router).mount("#app");
+createApp(App).use(router).mount("#app");

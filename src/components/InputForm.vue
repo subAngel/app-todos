@@ -1,32 +1,17 @@
 <template>
-	<div class="form-control">
-		<label class="label">
-			<span
-				class="label-text text-gray-500 font-bold md:text-right mb-2 md:mb-0"
-				>{{ titleLabel }}</span
-			>
-		</label>
-		<input
-			:type="typeInput"
-			:placeholder="placeholder"
-			class="input input-bordered"
-			v-model="value"
-		/>
-		<!-- @input="$emit('update:modelValue', $event.target.value)" -->
-
-		<label class="label">
-			<span class="label-text-alt">{{ errorMessage }}</span>
-		</label>
-	</div>
+	<input v-model="value" :type="type || 'text'" />
+	{{ errorMessage }}
 </template>
 
 <script setup>
 import { useField } from "vee-validate";
-import { defineProps, ref, watch, onMounted } from "vue";
-const props = defineProps(["titleLabel", "typeInput", "placeholder", "name"]);
-const emits = defineEmits(["update:modelValue"]);
 
-const { value, errorMessage } = useField(() => {
-	props.name;
+const props = defineProps({
+	name: String,
+	type: String,
 });
+
+// The `name` is returned in a function because we want to make sure it stays reactive
+// If the name changes you want `useField` to be able to pick it up
+const { value, errorMessage } = useField(() => props.name);
 </script>
