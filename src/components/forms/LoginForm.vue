@@ -32,9 +32,9 @@
 import { ref, reactive, onMounted, computed } from "vue";
 import { useForm } from "vee-validate";
 import CustomInput from "./inputs/InputValidated.vue";
-import { toTypedSchema } from "@vee-validate/zod";
 import * as yup from "yup";
-import { z } from "zod";
+
+import auth from "../auth";
 
 const email = ref("");
 const password = ref("");
@@ -51,8 +51,10 @@ const { errors, handleSubmit, defineInputBinds } = useForm({
 });
 
 const onSubmit = handleSubmit((values) => {
-	console.log(values);
-	alert(JSON.stringify(values, null, 2));
+	auth.login(values).then((res) => {
+		console.log(res);
+	});
+	// alert(JSON.stringify(values, null, 2));
 });
 
 const isDisabled = computed(() => {
