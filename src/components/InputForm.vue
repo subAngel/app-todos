@@ -1,6 +1,7 @@
 <template>
 	<div class="form-control w-full max-w-xs">
 		<input
+			autocomplete="off"
 			:type="type"
 			:placeholder="placeholder"
 			:value="modelValue"
