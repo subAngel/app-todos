@@ -1,5 +1,7 @@
 <template>
-	<LoginForm />
+	<div class="flex items-center justify-center h-screen">
+		<LoginForm />
+	</div>
 </template>
 
 <script setup>
