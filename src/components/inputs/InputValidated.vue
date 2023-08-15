@@ -13,7 +13,7 @@
 		/>
 	</div>
 	<label class="label">
-		<span class="text-error font-semibold">{{ errorMessage }}</span>
+		<span class="text-error font-semibold text-xs">{{ errorMessage }}</span>
 	</label>
 </template>
 

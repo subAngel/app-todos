@@ -42,6 +42,11 @@
 			v-model="passwordConfirm"
 		/>
 
+		<label v-if="passwordsMatch" class="text-xs font-medium">
+			<i class="fa-solid fa-circle-check" style="color: #44bf88"></i>
+			<span class="text-success"> Both passwords matched</span>
+		</label>
+
 		<div class="form-control mt-6">
 			<button class="btn btn-primary" :disabled="isDisabled">Regiter</button>
 		</div>
@@ -84,6 +89,7 @@ const { errors, handleSubmit } = useForm({
 
 const onSubmit = handleSubmit(onSuccess, onInvalidSubmit);
 function onSuccess(values) {
+	delete values.passwordConfirm;
 	alert(JSON.stringify(values, null, 2));
 }
 
@@ -94,5 +100,9 @@ function onInvalidSubmit({ values, errors, results }) {
 }
 const isDisabled = computed(() => {
 	return email.value === "" || password.value === "" || password.value.length < 6;
+});
+
+const passwordsMatch = computed(() => {
+	return password.value === passwordConfirm.value && password.value !== "";
 });
 </script>
