@@ -28,10 +28,14 @@ const props = defineProps({
 	type: String,
 });
 
+const emit = defineEmits(["update:modelValue"]);
 const { errorMessage, value, handleChange, handleBlur } = useField(
 	() => props.modelValue,
 	undefined,
-	{ validateOnValueUpdate: false }
+	{
+		// validateOnValueUpdate: false,
+		syncVModel: true,
+	}
 );
 
 const validationListener = {
