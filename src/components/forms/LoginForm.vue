@@ -31,10 +31,10 @@
 <script setup>
 import { ref, reactive, onMounted, computed } from "vue";
 import { useForm } from "vee-validate";
-import CustomInput from "./inputs/InputValidated.vue";
+import CustomInput from "../inputs/InputValidated.vue";
 import * as yup from "yup";
 
-import auth from "../auth";
+import auth from "../../auth";
 
 const email = ref("");
 const password = ref("");

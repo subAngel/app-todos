@@ -6,5 +6,5 @@
 
 <script setup>
 // import InputForm from "../components/InputForm.vue";
-import LoginForm from "../components/LoginForm.vue";
+import LoginForm from "../components/forms/LoginForm.vue";
 </script>
