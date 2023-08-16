@@ -51,6 +51,7 @@
 			<button class="btn btn-primary" :disabled="isDisabled">Regiter</button>
 		</div>
 	</form>
+
 </template>
 
 <script setup>
