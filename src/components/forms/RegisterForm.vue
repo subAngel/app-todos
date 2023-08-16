@@ -56,9 +56,13 @@
 
 <script setup>
 import { ref, reactive, onMounted, computed } from "vue";
+import axios from 'axios'
 import { useForm } from "vee-validate";
 import CustomInput from "../inputs/InputValidated.vue";
 import * as yup from "yup";
+
+import auth from "../../auth";
+
 
 const username = ref("");
 const fullname = ref("");
@@ -91,7 +95,13 @@ const { errors, handleSubmit } = useForm({
 const onSubmit = handleSubmit(onSuccess, onInvalidSubmit);
 function onSuccess(values) {
 	delete values.passwordConfirm;
-	alert(JSON.stringify(values, null, 2));
+	// alert(JSON.stringify(values, null, 2));
+
+	auth.register(values).then(response => {
+		console.log(response);
+	}).catch(error => {
+		alert(error)
+	})
 }
 
 function onInvalidSubmit({ values, errors, results }) {

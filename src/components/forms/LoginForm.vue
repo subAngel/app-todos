@@ -33,6 +33,7 @@ import { ref, reactive, onMounted, computed } from "vue";
 import { useForm } from "vee-validate";
 import CustomInput from "../inputs/InputValidated.vue";
 import * as yup from "yup";
+import axios from 'axios'
 
 import auth from "../../auth";
 
@@ -51,9 +52,12 @@ const { errors, handleSubmit, defineInputBinds } = useForm({
 });
 
 const onSubmit = handleSubmit((values) => {
-	auth.login(values).then((res) => {
-		console.log(res);
-	});
+
+	axios.post('https://api-todos-enwu.onrender.com/api/auth/login', values).then(res => {
+		console.log(res.data)
+	}).catch(err => {
+		console.log(err.response.data.message);
+	})
 	// alert(JSON.stringify(values, null, 2));
 });
 
