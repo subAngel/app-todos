@@ -41,12 +41,13 @@
 import { ref, reactive, onMounted, computed } from "vue";
 import { useForm } from "vee-validate";
 import CustomInput from "../inputs/InputValidated.vue";
-import Cookie from 'js-cookie';
+import Cookies from 'js-cookie';
 import * as yup from "yup";
 import axios from 'axios'
 import { useToast } from "vue-toastification";
 import 'notyf/notyf.min.css'; // for React, Vue and Svelte
 
+import { router } from '../../routes';
 import auth from "../../auth";
 import BtnAuth from "../buttons/BtnAuth.vue";
 
@@ -71,23 +72,22 @@ const onSubmit = handleSubmit((values) => {
 	login(values)
 });
 
-const login = async (user) => {
-	isLoading.value = true
-	axios.post('https://api-todos-enwu.onrender.com/api/auth/login',
-		user).then(res => {
-			// console.log(res.data.token);
-			const token = res.data.token
-			// const { token } = res.data
-			Cookies.set('authToken', token);
-		}).catch(err => {
-			// 19161445@itoaxaca.edu.mx
-			const errorMessage = err.response.data.message
-			// console.log(errorMessage);
-			toast.error(errorMessage)
-		}).finally(() => {
-			isLoading.value = false
-		})
-}
+const login =  (user) => {
+	isLoading.value = true;
+	axios.post('https://api-todos-enwu.onrender.com/api/auth/login', user).then(res => {
+		let token = res.data.token
+		console.log(token);
+		sessionStorage.token=token
+		router.push('/')
+	}).catch(err => {
+		const errorMessage = err.response.data.message || 'An error ocurred'
+		toast.error(errorMessage)
+		console.log(err);
+	}).finally(() => {
+		isLoading.value = false;
+	})
+
+};
 
 const isDisabled = computed(() => {
 	return email.value === "" || password.value === "" || password.value.length < 6 || isLoading.value==true;

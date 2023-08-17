@@ -12,12 +12,12 @@ const register = (data) => {
 }
 function isAuthenticated() {
 //   const token = localStorage.getItem("token"); // Cambia la clave según tu implementación
-	Cookies.get('authToken')
+	const token = sessionStorage.token
   return token !== null;
 }
 
 function logout() {
-	Cookies.remove('authToken')
+	sessionStorage.clear()
 }
 
 export default {

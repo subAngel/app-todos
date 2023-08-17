@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
-import {isAuthenticated}  from './auth'
+import auth from './auth'
 const routes = [
 	{
 		path: "/",
@@ -32,7 +32,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
 	// verifica si la ruta requiere autenticacion
 	if (to.meta.requiresAuth) {
-		if (isAuthenticated()) {
+		if (auth.isAuthenticated()) {
 			next()
 		} else {
 			next('/login'); // redirige al login si no esta logueado
