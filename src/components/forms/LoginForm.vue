@@ -34,12 +34,18 @@ import { useForm } from "vee-validate";
 import CustomInput from "../inputs/InputValidated.vue";
 import * as yup from "yup";
 import axios from 'axios'
+import { useToast } from "vue-toastification";
+import { Notyf } from 'notyf'
+import 'notyf/notyf.min.css'; // for React, Vue and Svelte
+
 
 import auth from "../../auth";
 
 const email = ref("");
 const password = ref("");
 
+const notyf = new Notyf({position: {x:'center', y:'top'}})
+const toast = useToast()
 const { errors, handleSubmit, defineInputBinds } = useForm({
 	validationSchema: yup.object({
 		email: yup.string().email().required(),
@@ -56,7 +62,9 @@ const onSubmit = handleSubmit((values) => {
 	axios.post('https://api-todos-enwu.onrender.com/api/auth/login', values).then(res => {
 		console.log(res.data)
 	}).catch(err => {
-		console.log(err.response.data.message);
+		const errorMessage = err.response.data.message
+		notyf.error(errorMessage)
+		toast.warning(errorMessage)
 	})
 	// alert(JSON.stringify(values, null, 2));
 });
