@@ -25,6 +25,7 @@
 		<div class="form-control mt-6">
 			<button class="btn btn-primary" :disabled="isDisabled">Login</button>
 		</div>
+
 	</form>
 </template>
 
@@ -44,7 +45,6 @@ import auth from "../../auth";
 const email = ref("");
 const password = ref("");
 
-const notyf = new Notyf({position: {x:'center', y:'top'}})
 const toast = useToast()
 const { errors, handleSubmit, defineInputBinds } = useForm({
 	validationSchema: yup.object({
@@ -63,8 +63,8 @@ const onSubmit = handleSubmit((values) => {
 		console.log(res.data)
 	}).catch(err => {
 		const errorMessage = err.response.data.message
-		notyf.error(errorMessage)
-		toast.warning(errorMessage)
+		// notyf.error(errorMessage)
+		toast.error(errorMessage)
 	})
 	// alert(JSON.stringify(values, null, 2));
 });

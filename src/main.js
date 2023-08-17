@@ -1,7 +1,13 @@
 import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
-import { plugin, defaultConfig } from "@formkit/vue";
+import Toast, { POSITION} from "vue-toastification";
+import "vue-toastification/dist/index.css";
 import { router } from "./routes";
 
-createApp(App).use(router).mount("#app");
+const toastOptions = {
+    position: POSITION.TOP_CENTER,
+    timeout:3000
+}
+
+createApp(App).use(router).use(Toast,toastOptions).mount("#app");
