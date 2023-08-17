@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import auth from '../../auth'
+import auth from '../../utils/auth'
 
 const logout = () => {
     auth.logout()
@@ -87,3 +87,4 @@ const logout = () => {
   transform: translate(2px ,2px);
 }
 </style>
+../../utils/auth

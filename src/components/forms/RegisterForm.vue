@@ -61,7 +61,7 @@ import { useForm } from "vee-validate";
 import CustomInput from "../inputs/InputValidated.vue";
 import * as yup from "yup";
 
-import auth from "../../auth";
+import auth from "../../utils/auth";
 
 
 const username = ref("");
@@ -117,3 +117,4 @@ const passwordsMatch = computed(() => {
 	return password.value === passwordConfirm.value && password.value !== "";
 });
 </script>
+../../utils/auth
