@@ -78,8 +78,9 @@ const login =  (user) => {
 		let token = res.data.token
 		let user = res.data.user
 		console.log(token);
-		sessionStorage.token = token
-		sessionStorage.user = JSON.stringify(user)
+		// sessionStorage.token = token
+		// sessionStorage.user = JSON.stringify(user)
+		$cookies.set('auth', token)
 		router.push('/')
 	}).catch(err => {
 		const errorMessage = err.response.data.message || 'An error ocurred'

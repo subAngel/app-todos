@@ -10,7 +10,7 @@
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <a class="btn btn-ghost normal-case text-xl">{{user.fullname}}</a>
+    <a class="btn btn-ghost normal-case text-xl">user name</a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -29,7 +29,7 @@
 import { ref, computed,reactive } from "vue";
 import BtnLogout from "../buttons/BtnLogout.vue";
 
-const user = reactive(JSON.parse(sessionStorage.user))
+// const user = reactive(JSON.parse(sessionStorage.user))
 
-console.log(user);
+// console.log(user);
 </script>

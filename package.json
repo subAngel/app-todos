@@ -18,6 +18,7 @@
 		"notyf": "^3.10.0",
 		"vee-validate": "^4.11.1",
 		"vue": "^3.3.4",
+		"vue-cookies": "^1.8.3",
 		"vue-router": "^4.2.4",
 		"vue-toastification": "^2.0.0-rc.5",
 		"vuelidate": "^0.7.7",

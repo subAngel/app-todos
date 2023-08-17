@@ -3,6 +3,7 @@ import "./style.css";
 import App from "./App.vue";
 import Toast, { POSITION} from "vue-toastification";
 import "vue-toastification/dist/index.css";
+import VueCookies from 'vue-cookies'
 import { router } from "./routes";
 
 const toastOptions = {
@@ -10,4 +11,4 @@ const toastOptions = {
     timeout:3000
 }
 
-createApp(App).use(router).use(Toast,toastOptions).mount("#app");
+createApp(App).use(router).use(VueCookies, { expires: '7d'}).use(Toast,toastOptions).mount("#app");

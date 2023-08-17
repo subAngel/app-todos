@@ -1,5 +1,6 @@
 import axios from "axios";
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
+
 
 const ENDPOINT_PATH = "https://api-todos-enwu.onrender.com/api/";
 
@@ -17,7 +18,8 @@ function isAuthenticated() {
 }
 
 function logout() {
-	sessionStorage.clear()
+	// sessionStorage.clear()
+	$cookies.remove('auth')
 }
 
 export default {
