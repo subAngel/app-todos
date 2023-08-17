@@ -1,5 +1,5 @@
 <template>
-  <button class=" bg-primary rounded-lg py-3 h-12 text-primary-content font-bold text-lg flex justify-center items-center focus:bg-primary-focus disabled:opacity-60 " tabindex="-1" role="button" aria-disabled="true"
+  <button class=" bg-primary rounded-lg py-3 h-12 text-primary-content font-bold text-lg flex justify-center items-center focus:bg-primary-focus disabled:opacity-60 disabled:cursor-not-allowed" tabindex="-1" role="button" aria-disabled="true"
 			:class="{'isDisabled': isLoading}"
 				:disabled="isLoading || isDisabled"
 				>

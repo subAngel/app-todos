@@ -1,20 +1,19 @@
 import axios from "axios";
 // import Cookies from 'js-cookie'
+import api from '@/utils/api'
 
 
-const ENDPOINT_PATH = "https://api-todos-enwu.onrender.com/api/";
 
 const login = (user) => {
-	return axios.post(ENDPOINT_PATH + "/auth/login/", JSON.parse(user));
+	return axios.post(api + "/auth/login/", user);
 };
 
 const register = (data) => {
-	return axios.post(ENDPOINT_PATH+'/users/',data)
+	return axios.post(api+'/users/',data)
 }
 function isAuthenticated() {
-//   const token = localStorage.getItem("token"); // Cambia la clave según tu implementación
 	const token = sessionStorage.token
-  return token !== null;
+	return token !== null;
 }
 
 function logout() {

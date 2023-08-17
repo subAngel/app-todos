@@ -41,12 +41,9 @@
 import { ref, reactive, onMounted, computed } from "vue";
 import { useForm } from "vee-validate";
 import CustomInput from "../inputs/InputValidated.vue";
-import Cookies from 'js-cookie';
 import * as yup from "yup";
-import axios from 'axios'
 import { useToast } from "vue-toastification";
 import 'notyf/notyf.min.css'; // for React, Vue and Svelte
-import api from '../../utils/api'
 import { router } from '../../routes';
 import auth from "../../utils/auth";
 import BtnAuth from "../buttons/BtnAuth.vue";
@@ -74,13 +71,8 @@ const onSubmit = handleSubmit((values) => {
 
 const login =  (user) => {
 	isLoading.value = true;
-	axios.post(`${api}auth/login`, user).then(res => {
-		let token = res.data.token
-		let user = res.data.user
-		console.log(token);
-		// sessionStorage.token = token
-		// sessionStorage.user = JSON.stringify(user)
-		$cookies.set('auth', token)
+	auth.login(user).then(res => {
+		$cookies.set('auth', res.data.token)
 		router.push('/')
 	}).catch(err => {
 		const errorMessage = err.response.data.message || 'An error ocurred'
