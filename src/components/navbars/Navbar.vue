@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar  bg-base-300">
+  <div class="fixed top-0 navbar bg-base-300">
     <div class="navbar-start">
       <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -12,8 +12,10 @@
           <li><a>Item 3</a></li>
         </ul>
       </div>
-      <a class="normal-case text-xl font-bold ">{{ fullname }}</a>
+      <img src="https://cdn-icons-png.flaticon.com/256/906/906334.png" class="h-10 mr-3 ml-3" alt="Tasks app" />
+      <a class="normal-case text-xl font-bold">App Tasks</a>
     </div>
+
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li><a>Item 1</a></li>
@@ -21,18 +23,44 @@
         <li><a>Item 3</a></li>
       </ul>
     </div>
+
     <div class="navbar-end">
-      <BtnLogout />
+
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="avatar hover:cursor-pointer">
+          <div class="w-10 rounded-full ring ring-success ring-offset-base-100 ring-offset-2 mr-4">
+            <img src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146" />
+          </div>
+        </label>
+
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          <div class="text-center">
+            <div class="font-bold">{{ username }}</div>
+            <div class="text-sm opacity-50">{{ fullname }}</div>
+          </div>
+          <li class="mt-3">
+            <a class="btn btn-info btn-xs text-xs capitalize ">
+              Profile
+            </a>
+          </li>
+          <!-- <BtnLogout /> -->
+          <li class="mt-3"><a class="btn btn-error btn-xs text-xs capitalize " @click="logout">Log Out</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
+// <BtnLogout />
 import { ref, computed, reactive } from "vue";
 import BtnLogout from "../buttons/BtnLogout.vue";
 
-const props = defineProps(['fullname'])
-// const user = reactive(JSON.parse(sessionStorage.user))
+const props = defineProps(['fullname', 'username'])
 
-// console.log(user);
+import auth from '../../utils/auth'
+
+const logout = () => {
+  auth.logout()
+}
 </script>

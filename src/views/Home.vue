@@ -1,5 +1,7 @@
 <template>
-    <Navbar :fullname="user.fullname" />
+    <Navbar :fullname="user.fullname" :username="user.username" />
+
+    <Footer />
 </template>
 
 <script setup>
@@ -8,6 +10,7 @@ import Navbar from '../components/navbars/Navbar.vue';
 import { router } from '../routes'
 import auth from '../utils/auth';
 import { useToast } from 'vue-toastification'
+import Footer from '../components/Footer.vue';
 
 const user = ref({});
 const toast = useToast()
@@ -20,17 +23,13 @@ onBeforeMount(() => {
 
 function getUser() {
     const token = $cookies.get('auth')
-    // console.log(token);
     auth.fetchUser(token).then(res => {
-        // console.log("getUser", res.data)
         user.value = res.data
     }).catch(err => {
         console.log(err);
         const errorMessage = err.response.data.message || 'An error ocurred'
         toast.error(errorMessage)
-        // console.log(err);
     });
-    // console.log('hola');
 }
 
 onMounted(() => {
