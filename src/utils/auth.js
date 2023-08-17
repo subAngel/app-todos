@@ -9,7 +9,7 @@ const login = (user) => {
 };
 
 const register = (data) => {
-	return axios.post(api+'/users/',data)
+	return axios.post(api+'/users/register',data)
 }
 function isAuthenticated() {
 	const token = sessionStorage.token
