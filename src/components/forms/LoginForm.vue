@@ -27,9 +27,11 @@
 		</div>
 
 		<div class="mt-6 text-center text-sm font-semibold" >
-				<span class="text-center">Don't have an account? <router-link
+				<span class="text-center">Don't have an account?
+					<router-link
 					class="link link-hover link-primary"
-					to="/register">Sign up</router-link></span>
+					to="/register">Sign up</router-link>
+				</span>
 		</div>
 
 	</form>
@@ -39,7 +41,7 @@
 import { ref, reactive, onMounted, computed } from "vue";
 import { useForm } from "vee-validate";
 import CustomInput from "../inputs/InputValidated.vue";
-import Loader from "../loaders/Loader.vue";
+import Cookie from 'js-cookie';
 import * as yup from "yup";
 import axios from 'axios'
 import { useToast } from "vue-toastification";
@@ -73,9 +75,15 @@ const login = async (user) => {
 	isLoading.value = true
 	axios.post('https://api-todos-enwu.onrender.com/api/auth/login',
 		user).then(res => {
-			console.log(res.data);
+			// console.log(res.data.token);
+			const token = res.data.token
+			// const { token } = res.data
+			Cookies.set('authToken', token);
 		}).catch(err => {
-			toast.error(err.response.data.message)
+			// 19161445@itoaxaca.edu.mx
+			const errorMessage = err.response.data.message
+			// console.log(errorMessage);
+			toast.error(errorMessage)
 		}).finally(() => {
 			isLoading.value = false
 		})
