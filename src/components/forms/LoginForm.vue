@@ -76,8 +76,10 @@ const login =  (user) => {
 	isLoading.value = true;
 	axios.post('https://api-todos-enwu.onrender.com/api/auth/login', user).then(res => {
 		let token = res.data.token
+		let user = res.data.user
 		console.log(token);
-		sessionStorage.token=token
+		sessionStorage.token = token
+		sessionStorage.user = JSON.stringify(user)
 		router.push('/')
 	}).catch(err => {
 		const errorMessage = err.response.data.message || 'An error ocurred'
