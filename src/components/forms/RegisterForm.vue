@@ -92,7 +92,6 @@ function onInvalidSubmit({ values, errors, results }) {
 const register = (data) => {
 	isLoading.value = true
 	auth.register(data).then(res => {
-		console.log(res.data);
 		isLoading.value = true;
 		const { newUser } = res.data
 		const { email } = newUser
