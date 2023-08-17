@@ -12,7 +12,7 @@
           <li><a>Item 3</a></li>
         </ul>
       </div>
-      <a class="btn btn-ghost normal-case text-xl font-bold ">{{ fullname }}</a>
+      <a class="normal-case text-xl font-bold ">{{ fullname }}</a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import { ref, computed, reactive, defineProps } from "vue";
+import { ref, computed, reactive } from "vue";
 import BtnLogout from "../buttons/BtnLogout.vue";
 
 const props = defineProps(['fullname'])

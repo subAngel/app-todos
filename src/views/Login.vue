@@ -6,5 +6,13 @@
 
 <script setup>
 // import InputForm from "../components/InputForm.vue";
+import { onBeforeMount } from 'vue'
+import { router } from '../routes'
 import LoginForm from "../components/forms/LoginForm.vue";
+
+onBeforeMount(() => {
+	if ($cookies.isKey('auth')) {
+		router.push('/')
+	}
+})
 </script>
