@@ -11,7 +11,7 @@
 
             <div v-for="task in tasks" :key="task.id" class="mx-auto w-5/6 ">
 
-                <TaskCard :title="task.title" :description="task.description" @complete="onCompleteTask(task.id)"
+                <TaskCard :title="task.title" :description="task.description" @complete="completeTask(task.id)"
                     @update="onUpdateTask(task.id)" />
 
             </div>
@@ -32,14 +32,23 @@ const toast = useToast()
 
 const tasks = ref([])
 const isLoading = ref(false)
+const isLoadingComplete = ref(false)
+const isLoadingEdit = ref(false)
 
 const estilo = computed(() => ({
     'grid grid-cols-1 lg:grid-cols-2  gap-5': tasks.value.length !== 0,
     'flex justify-center items-center': tasks.value.length === 0
 }))
 
-const onCompleteTask = (id) => {
-    console.log(`Task ${id} completed`);
+const completeTask = async (id) => {
+    try {
+        const token = $cookies.get('auth')
+        const res = await auth.completeTask(token, id)
+        console.log(res.data);
+    } catch (error) {
+        console.log(error);
+        toast.error('Error udpating task')
+    }
 }
 const onUpdateTask = (id) => {
     console.log(`Task ${id} updated`);
