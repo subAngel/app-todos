@@ -1,11 +1,18 @@
 <template>
     <div class="mockup-window border bg-base-300">
-        <div class="bg-base-200 grid grid-cols-1 grid-rows-2 gap-5 py-5">
+        <div class="bg-base-200  py-5" :class="estilo">
             <div v-if="isLoading" class="place-self-center">
                 <Loader2 />
             </div>
+
+            <div v-else-if="tasks.length === 0">
+                <h2 class="font-extrabold text-5xl text-center align-middle opacity-70">There are no tasks</h2>
+            </div>
+
             <div v-for="task in tasks" :key="task.id" class="mx-auto w-5/6 ">
+
                 <TaskCard :title="task.title" :description="task.description" />
+
             </div>
         </div>
     </div>
@@ -13,7 +20,7 @@
 
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import auth from '../utils/auth';
 import { useToast } from 'vue-toastification'
 
@@ -24,6 +31,13 @@ const toast = useToast()
 
 const tasks = ref([])
 const isLoading = ref(false)
+
+const estilo = computed(() => ({
+    'grid grid-cols-1 lg:grid-cols-2 grid-rows-2 gap-5': tasks.value.length !== 0,
+    'flex justify-center items-center': tasks.value.length === 0
+}))
+
+
 
 onMounted(() => {
     const token = $cookies.get('auth')

@@ -39,6 +39,15 @@ function fetchTasks(token) {
 		}
 	})
 }
+
+function fetchCompletedTasks(token) {
+	return axios.get(api + '/profile/completed-tasks', {
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	})
+}
+
 function logout() {
 	// sessionStorage.clear()
 	if ($cookies.get('auth')) {
@@ -49,5 +58,5 @@ function logout() {
 
 export default {
 	login, register, isAuthenticated, logout,
-	fetchUser, fetchTasks
+	fetchUser, fetchTasks, fetchCompletedTasks
 };
