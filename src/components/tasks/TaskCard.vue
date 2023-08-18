@@ -5,9 +5,8 @@
             <p class="text-xs italic">{{ description }}</p>
         </div>
         <div class="flex justify-between gap-2">
-            <BtnCard tooltip="Complete" tipo="complete" circle />
-            <BtnCard tooltip="Update" tipo="update" circle />
-
+            <BtnCard tooltip="Complete" tipo="complete" circle @click="$emit('complete')" />
+            <BtnCard tooltip="Update" tipo="update" circle @click="$emit('update')" />
         </div>
 
     </div>
@@ -16,6 +15,9 @@
 <script setup>
 import BtnCard from '../buttons/BtnCard.vue';
 
+
+// console.log();
+const emits = defineEmits(['complete', 'update'])
 
 const props = defineProps(['title', 'description'])
 </script>

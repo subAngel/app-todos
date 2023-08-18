@@ -1,13 +1,16 @@
 <template>
     <div class="lg:tooltip" :data-tip="tooltip">
-        <button :class="[bgColor, shape]" class="btn hover:text-slate-800">
+        <button :class="[bgColor, shape]" class="btn hover:text-slate-800" @click.prevent="$emit('click')">
 
-            <i :class="icon" class="text-xl text-slate-100 "></i>
+            <i v-if="isLoading" :class="icon" class="text-xl text-slate-100 "></i>
+            <i v-else class="fa-solid fa-spinner fa-spin-pulse text-xl text-slate-100"></i>
         </button>
     </div>
 </template>
 <script setup>
 import { computed, reactive } from 'vue'
+
+const emit = defineEmits(['click'])
 
 const props = defineProps({
     tipo: {
@@ -22,6 +25,9 @@ const props = defineProps({
     },
     circle: {
         default: false,
+        type: Boolean
+    },
+    isLoading: {
         type: Boolean
     }
 })

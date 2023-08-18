@@ -11,7 +11,8 @@
 
             <div v-for="task in tasks" :key="task.id" class="mx-auto w-5/6 ">
 
-                <TaskCard :title="task.title" :description="task.description" />
+                <TaskCard :title="task.title" :description="task.description" @complete="onCompleteTask(task.id)"
+                    @update="onUpdateTask(task.id)" />
 
             </div>
         </div>
@@ -37,7 +38,12 @@ const estilo = computed(() => ({
     'flex justify-center items-center': tasks.value.length === 0
 }))
 
-
+const onCompleteTask = (id) => {
+    console.log(`Task ${id} completed`);
+}
+const onUpdateTask = (id) => {
+    console.log(`Task ${id} updated`);
+}
 
 onMounted(() => {
     const token = $cookies.get('auth')
