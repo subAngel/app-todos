@@ -3,24 +3,43 @@ import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import auth from './utils/auth'
+import Tasks from './views/Tasks.vue'
+import CompletedTasks from './views/CompletedTasks.vue'
 const routes = [
 	{
-		path: "/",
+		path: "/:username",
 		component: Home,
 		meta: {
 			requiresAuth: true
 		},
-		name: "home",
+		name: "Home",
+		children: [
+			{
+				path: '/:username/tasks',
+				name: "Tasks",
+				component: Tasks
+			}, {
+				path: '/:username/completed-tasks',
+				name: "CompletedTasks",
+				component: CompletedTasks
+			}
+		]
 	},
 	{
 		path: "/login",
 		component: Login,
 		name: "login",
+		meta: {
+			requiresAuth: false
+		},
 	},
 	{
 		path: "/register",
 		component: Register,
 		name: "register",
+		meta: {
+			requiresAuth: false
+		},
 	},
 ];
 

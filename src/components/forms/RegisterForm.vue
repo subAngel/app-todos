@@ -100,7 +100,7 @@ const register = (data) => {
 			password: passwordConfirm.value
 		}).then(res => {
 			$cookies.set('auth', res.data.token)
-			router.push('/')
+			router.push(`/${res.data.user.username}/tasks`)
 		}).catch(err => {
 			const errorMessage = err.response.data.message || 'An error ocurred'
 			toast.error(errorMessage)

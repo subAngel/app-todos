@@ -1,6 +1,15 @@
 <template>
     <Navbar :fullname="user.fullname" :username="user.username" />
 
+    <main class="mx-auto w-9/12 pt-28">
+        <router-link :to="`/${$route.params.username}/tasks`">
+            Taks
+        </router-link>
+        <router-link :to="`/${$route.params.username}/completed-tasks`">Completed Tasks</router-link>
+        <router-view></router-view>
+    </main>
+    <Modal />
+
     <Footer />
 </template>
 
@@ -11,6 +20,7 @@ import { router } from '../routes'
 import auth from '../utils/auth';
 import { useToast } from 'vue-toastification'
 import Footer from '../components/Footer.vue';
+import Modal from '../components/modals/Modal.vue';
 
 const user = ref({});
 const toast = useToast()

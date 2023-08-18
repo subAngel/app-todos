@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed top-0 navbar bg-base-300">
+  <div class="sticky top-0 navbar bg-base-300">
     <div class="navbar-start">
       <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -8,8 +8,9 @@
           </svg>
         </label>
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a>Item 1</a></li>
-          <li><a>Item 3</a></li>
+
+          <button class="btn" onclick="my_modal_2.showModal()">open modal</button>
+          <!-- Modal backdrop. This what you want to place close to the closing body tag -->
         </ul>
       </div>
       <img src="https://cdn-icons-png.flaticon.com/256/906/906334.png" class="h-10 mr-3 ml-3" alt="Tasks app" />
@@ -17,11 +18,11 @@
     </div>
 
     <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal px-1">
-        <li><a>Item 1</a></li>
+      <!-- <ul class="menu menu-horizontal px-1">
 
-        <li><a>Item 3</a></li>
-      </ul>
+      </ul> -->
+      <button id="myBtn">Open Modal</button>
+
     </div>
 
     <div class="navbar-end">
@@ -54,11 +55,12 @@
 <script setup>
 // <BtnLogout />
 import { ref, computed, reactive } from "vue";
-import BtnLogout from "../buttons/BtnLogout.vue";
+// import BtnLogout from "../buttons/BtnLogout.vue";
 
 const props = defineProps(['fullname', 'username'])
 
 import auth from '../../utils/auth'
+import Modal from "../modals/Modal.vue";
 
 const logout = () => {
   auth.logout()

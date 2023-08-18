@@ -11,8 +11,9 @@ import { router } from '../routes'
 import LoginForm from "../components/forms/LoginForm.vue";
 
 onBeforeMount(() => {
-	if ($cookies.isKey('auth')) {
-		router.push('/')
-	}
+	$cookies.remove('auth')
+	// if ($cookies.isKey('auth')) {
+	// 	router.push('/')
+	// }
 })
 </script>
