@@ -1,12 +1,12 @@
 <template>
-    <Navbar :fullname="user.fullname" :username="user.username" />
+    <Navbar class="z-10" :fullname="user.fullname" :username="user.username" />
 
-    <main class="mx-auto w-10/12 pt-5">
+    <main class="mx-auto w-10/12 pt-5 z-0">
         <div class="w-4/6 mx-auto flex items-center content-center justify-center mb-5">
-            <router-link class=" w-1/2 text-center text-xl" :to="`/${$route.params.username}/tasks`">
+            <router-link class=" w-1/3 text-center text-xl" :to="`/${$route.params.username}/tasks`">
                 <span>Tasks</span>
             </router-link>
-            <router-link class=" w-1/2 text-center text-xl" :to="`/${$route.params.username}/completed-tasks`">
+            <router-link class=" w-1/3 text-center text-xl" :to="`/${$route.params.username}/completed-tasks`">
                 <span>Completed</span>
             </router-link>
         </div>

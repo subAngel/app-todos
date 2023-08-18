@@ -33,7 +33,7 @@ const tasks = ref([])
 const isLoading = ref(false)
 
 const estilo = computed(() => ({
-    'grid grid-cols-1 lg:grid-cols-2 grid-rows-2 gap-5': tasks.value.length !== 0,
+    'grid grid-cols-1 lg:grid-cols-2  gap-5': tasks.value.length !== 0,
     'flex justify-center items-center': tasks.value.length === 0
 }))
 

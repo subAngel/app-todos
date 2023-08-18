@@ -14,7 +14,6 @@
 
                 <TaskCard v-if="tasks.length !== 0" :title="task.title" :description="task.description" />
 
-
             </div>
         </div>
     </div>
