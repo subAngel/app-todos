@@ -33,6 +33,7 @@ onBeforeMount(() => {
 
 function getUser() {
     const token = $cookies.get('auth')
+
     auth.fetchUser(token).then(res => {
         user.value = res.data
     }).catch(err => {

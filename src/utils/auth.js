@@ -3,7 +3,14 @@ import axios from "axios";
 import api from '@/utils/api'
 import { router } from '../routes'
 
+const config = (token) => {
+	return {
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	}
 
+};
 
 const login = (user) => {
 	return axios.post(api + "/auth/login/", user);
@@ -18,12 +25,19 @@ function isAuthenticated() {
 }
 
 function fetchUser(token) {
-	const config = {
+	return axios.get(api + '/profile', {
 		headers: {
 			'Authorization': `Bearer ${token}`
 		}
-	};
-	return axios.get(api + '/profile', config)
+	})
+}
+
+function fetchTasks(token) {
+	return axios.get(api + '/profile/my-tasks', {
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	})
 }
 function logout() {
 	// sessionStorage.clear()
@@ -34,5 +48,6 @@ function logout() {
 }
 
 export default {
-	login, register, isAuthenticated, logout, fetchUser
+	login, register, isAuthenticated, logout,
+	fetchUser, fetchTasks
 };
