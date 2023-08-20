@@ -1,9 +1,10 @@
 <template>
     <div class="lg:tooltip" :data-tip="tooltip">
-        <button :class="[bgColor, shape]" class="btn hover:text-slate-800" @click.prevent="$emit('click')">
+        <button :class="[bgColor, shape]" class="btn hover:text-slate-800 disabled:cursor-not-allowed"
+            @click.prevent="$emit('click')" :disabled="isLoading">
 
-            <i :class="icon" class="text-xl text-slate-100 "></i>
-            <!-- <i v-else class="fa-solid fa-spinner fa-spin-pulse text-xl text-slate-100"></i> -->
+            <i v-if="isLoading" class="fa-solid fa-spinner fa-spin-pulse text-xl text-slate-100"></i>
+            <i v-else :class="icon" class="text-xl text-slate-100 "></i>
         </button>
     </div>
 </template>

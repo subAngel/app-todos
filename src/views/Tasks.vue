@@ -11,8 +11,11 @@
 
             <div v-for="task in tasks" :key="task.id" class="mx-auto w-5/6 ">
 
-                <TaskCard :title="task.title" :description="task.description" @complete="completeAnyTask(task.id)"
-                    @update="onUpdateTask(task.id)" />
+                <TaskCard :title="task.title" :description="task.description">
+                    <BtnCard tooltip="Complete" tipo="complete" circle @click="completeAnyTask(task.id)"
+                        :is-loading="isLoadingComplete" />
+                    <BtnCard tooltip="Update" tipo="update" circle @click="onUpdateTask(task.id)" />
+                </TaskCard>
 
             </div>
         </div>
@@ -23,10 +26,12 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import auth from '../utils/auth';
+import api from '@/utils/api'
 import { useToast } from 'vue-toastification'
 
 import TaskCard from '../components/tasks/TaskCard.vue'
 import Loader2 from '../components/loaders/Loader2.vue'
+import BtnCard from '../components/buttons/BtnCard.vue';
 
 const toast = useToast()
 const token = $cookies.get('auth')
@@ -43,8 +48,9 @@ const estilo = computed(() => ({
 }))
 
 const completeAnyTask = async (id) => {
+    isLoadingComplete.value = true
     try {
-        const rawRes = await fetch(`https://api-todos-enwu.onrender.com/api/profile/my-tasks/${id}`, {
+        const rawRes = await fetch(`${api}/profile/my-tasks/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,11 +59,13 @@ const completeAnyTask = async (id) => {
             }
         })
         const response = await rawRes.json()
-        console.log(response.data);
         toast.success("Task completed")
     } catch (error) {
         console.log(error);
+        // isLoadingComplete.value = false;
         toast.error(error.response.status === 401 ? 'Unhauthorized' : "Failed to complete the task")
+    } finally {
+        isLoadingComplete.value = false
     }
 }
 const onUpdateTask = (id) => {

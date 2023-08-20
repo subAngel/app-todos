@@ -5,10 +5,8 @@
             <p class="text-xs italic">{{ description }}</p>
         </div>
         <div class="flex justify-between gap-2">
-            <BtnCard tooltip="Complete" tipo="complete" circle @click="$emit('complete')" />
-            <BtnCard tooltip="Update" tipo="update" circle @click="$emit('update')" />
+            <slot></slot>
         </div>
-        <!-- TODO spinner y bloquear el boton al cargar la peticion -->
     </div>
 </template>
 
@@ -17,7 +15,7 @@ import BtnCard from '../buttons/BtnCard.vue';
 
 
 // console.log();
-const emits = defineEmits(['complete', 'update'])
+// const emits = defineEmits(['complete', 'update'])
 
 const props = defineProps(['title', 'description', 'isLoading'])
 </script>
