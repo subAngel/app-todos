@@ -11,7 +11,7 @@
 
             <div v-for="task in tasks" :key="task.id" class="mx-auto w-5/6 ">
 
-                <TaskCard :title="task.title" :description="task.description" @complete="completeTask(task.id)"
+                <TaskCard :title="task.title" :description="task.description" @complete="completeAnyTask(task.id)"
                     @update="onUpdateTask(task.id)" />
 
             </div>
@@ -29,6 +29,8 @@ import TaskCard from '../components/tasks/TaskCard.vue'
 import Loader2 from '../components/loaders/Loader2.vue'
 
 const toast = useToast()
+const token = $cookies.get('auth')
+
 
 const tasks = ref([])
 const isLoading = ref(false)
@@ -40,14 +42,22 @@ const estilo = computed(() => ({
     'flex justify-center items-center': tasks.value.length === 0
 }))
 
-const completeTask = async (id) => {
+const completeAnyTask = async (id) => {
     try {
-        const token = $cookies.get('auth')
-        const res = await auth.completeTask(token, id)
-        console.log(res.data);
+        const rawRes = await fetch(`https://api-todos-enwu.onrender.com/api/profile/my-tasks/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        const response = await rawRes.json()
+        console.log(response.data);
+        toast.success("Task completed")
     } catch (error) {
         console.log(error);
-        toast.error('Error udpating task')
+        toast.error(error.response.status === 401 ? 'Unhauthorized' : "Failed to complete the task")
     }
 }
 const onUpdateTask = (id) => {
@@ -55,7 +65,6 @@ const onUpdateTask = (id) => {
 }
 
 onMounted(() => {
-    const token = $cookies.get('auth')
     isLoading.value = true
     auth.fetchTasks(token).then(res => {
         // console.log(res.data);

@@ -49,7 +49,7 @@ function fetchCompletedTasks(token) {
 }
 
 function completeTask(token, id) {
-	return axios.get(api + '/profile/my-tasks/' + id, {
+	return axios.patch(`${api}/profile/my-tasks/${id}`, {
 		headers: {
 			'Authorization': `Bearer ${token}`
 		}
