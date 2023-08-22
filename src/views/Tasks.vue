@@ -32,6 +32,7 @@ import { useToast } from 'vue-toastification'
 import TaskCard from '../components/tasks/TaskCard.vue'
 import Loader2 from '../components/loaders/Loader2.vue'
 import BtnCard from '../components/buttons/BtnCard.vue';
+import ModalTailwind from '../components/ModalTailwind.vue';
 
 const toast = useToast()
 const token = $cookies.get('auth')
@@ -75,10 +76,8 @@ const onUpdateTask = (id) => {
 onMounted(() => {
     isLoading.value = true
     auth.fetchTasks(token).then(res => {
-        // console.log(res.data);
         tasks.value = res.data
     }).catch(err => {
-        // console.log(err);
         toast.error("Error loading the tasks")
     }).finally(() => {
         isLoading.value = false

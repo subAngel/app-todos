@@ -11,8 +11,9 @@
             </router-link>
         </div>
         <router-view></router-view>
+
     </main>
-    <Modal />
+    <!-- <Modal /> -->
 
     <Footer />
 </template>
@@ -25,6 +26,7 @@ import auth from '../utils/auth';
 import { useToast } from 'vue-toastification'
 import Footer from '../components/Footer.vue';
 import Modal from '../components/modals/Modal.vue';
+import ModalTailwind from '../components/ModalTailwind.vue'
 
 const user = ref({});
 const toast = useToast()
