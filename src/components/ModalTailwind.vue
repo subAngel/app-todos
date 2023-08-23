@@ -1,5 +1,17 @@
 <template>
-    <div id="myModal" v-if="mostrar" class="card w-96 bg-primary text-primary-content shadow-xl">
+    <input type="checkbox" id="my_modal_7" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Create a new task!</h3>
+            <p class="py-4">This modal works with a hidden checkbox!</p>
+            <div class="modal-action">
+                <button class="btn btn-primary">Create</button>
+                <label for="my_modal_6" class="btn">Close!</label>
+            </div>
+        </div>
+        <label class="modal-backdrop" for="my_modal_7">Close</label>
+    </div>
+    <!-- <div class="card w-96 bg-primary text-primary-content shadow-xl">
         <div class="card-body">
             <h2 class="card-title">Card title!</h2>
             <div>
@@ -11,65 +23,14 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Modal content -->
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 
-const props = defineProps({
-    mostrar: {
-        default: false,
-        type: Boolean
-    }
-})
 </script>
 
 
 <style scoped>
-/* Modal Header */
-.modal-header {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
-}
-
-/* Modal Body */
-.modal-body {
-    padding: 2px 16px;
-}
-
-/* Modal Footer */
-.modal-footer {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
-}
-
-/* Modal Content */
-.modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    width: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    animation-name: animatetop;
-    animation-duration: 0.4s
-}
-
-/* Add Animation */
-@keyframes animatetop {
-    from {
-        top: -300px;
-        opacity: 0
-    }
-
-    to {
-        top: 0;
-        opacity: 1
-    }
-}
 </style>

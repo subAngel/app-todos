@@ -21,8 +21,8 @@
       <!-- <ul class="menu menu-horizontal px-1">
 
       </ul> -->
-      <button class="btn btn-primary" @click.prevent="showModal = true; click()">Create a new task</button>
-
+      <!-- <button class="btn btn-primary" @click.prevent="showModal = true; click()">Create a new task</button> -->
+      <label for="my_modal_7" class="btn btn-primary">open modal</label>
 
     </div>
 
@@ -52,7 +52,7 @@
     </div>
   </div>
 
-  <ModalTailwind :mostrar="showModal" />
+  <ModalTailwind />
 </template>
 
 <script setup>
