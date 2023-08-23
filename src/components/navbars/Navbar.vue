@@ -9,7 +9,7 @@
         </label>
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
-          <button class="btn btn-primary" @click.prevent="showModal = true">Create a new task</button>
+          <button class="btn btn-primary" @click.prevent="showModal = true; click()">Create a new task</button>
           <!-- Modal backdrop. This what you want to place close to the closing body tag -->
         </ul>
       </div>
@@ -21,7 +21,7 @@
       <!-- <ul class="menu menu-horizontal px-1">
 
       </ul> -->
-      <button class="btn btn-primary" @click.prevent="showModal = true">Create a new task</button>
+      <button class="btn btn-primary" @click.prevent="showModal = true; click()">Create a new task</button>
 
 
     </div>
@@ -52,7 +52,7 @@
     </div>
   </div>
 
-  <ModalTailwind :show="showModal" />
+  <ModalTailwind :mostrar="showModal" />
 </template>
 
 <script setup>
@@ -66,6 +66,11 @@ import auth from '../../utils/auth'
 import ModalTailwind from "../ModalTailwind.vue";
 
 const showModal = ref(false)
+
+const click = () => {
+  console.log(showModal.value ? 'Mostrar modal' : 'Esconder modals');
+
+}
 
 const logout = () => {
   auth.logout()
