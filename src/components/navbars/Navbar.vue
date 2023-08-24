@@ -9,8 +9,8 @@
         </label>
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
-          <button class="btn btn-primary" @click.prevent="showModal = true; click()">Create a new task</button>
-          <!-- Modal backdrop. This what you want to place close to the closing body tag -->
+          <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+
         </ul>
       </div>
       <img src="https://cdn-icons-png.flaticon.com/256/906/906334.png" class="h-10 mr-3 ml-3" alt="Tasks app" />
@@ -18,11 +18,8 @@
     </div>
 
     <div class="navbar-center hidden lg:flex">
-      <!-- <ul class="menu menu-horizontal px-1">
 
-      </ul> -->
-      <!-- <button class="btn btn-primary" @click.prevent="showModal = true; click()">Create a new task</button> -->
-      <label for="my_modal_7" class="btn btn-primary">open modal</label>
+      <button class="btn" onclick="my_modal_5.showModal()">Create Task</button>
 
     </div>
 
@@ -52,7 +49,18 @@
     </div>
   </div>
 
-  <ModalTailwind />
+  <ModalTailwind>
+    <template v-slot:title>
+      <h3 class="font-bold text-lg">Create Task</h3>
+    </template>
+    <template v-slot:body>
+      formulario
+    </template>
+    <template v-slot:actions>
+      <button class="btn">Close</button>
+
+    </template>
+  </ModalTailwind>
 </template>
 
 <script setup>
