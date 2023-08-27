@@ -53,13 +53,19 @@ const { errors, handleSubmit, defineInputBinds, isSubmitting, resetForm } = useF
 });
 
 const onSubmit = handleSubmit((values) => {
-    console.log(values);
+    const token = $cookies.get('auth')
     values = {
         ...values,
         completed: completed.value,
         dueDate: dueDate.value
     }
-    console.log(values);
+    auth.createTask(token, values).then(res => {
+        console.log("Task created");
+        clear()
+    }).catch(err => {
+        console.log(err);
+        console.error('Error creating task')
+    })
 })
 
 

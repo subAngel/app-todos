@@ -64,8 +64,12 @@ function logout() {
 	}
 }
 
-function createTask(config) {
-	return axios.post(`${api}/profile/my-tasks`, config)
+function createTask(token, data) {
+	return axios.post(`${api}/profile/my-tasks`, data, {
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	})
 }
 
 export default {
