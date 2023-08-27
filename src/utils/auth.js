@@ -64,7 +64,11 @@ function logout() {
 	}
 }
 
+function createTask(config) {
+	return axios.post(`${api}/profile/my-tasks`, config)
+}
+
 export default {
 	login, register, isAuthenticated, logout,
-	fetchUser, fetchTasks, fetchCompletedTasks, completeTask
+	fetchUser, fetchTasks, fetchCompletedTasks, completeTask, createTask
 };

@@ -32,7 +32,7 @@
           </div>
         </label>
 
-        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 -z-0 p-2 shadow bg-base-100 rounded-box w-52">
           <div class="text-center">
             <div class="font-bold">{{ username }}</div>
             <div class="text-sm opacity-50">{{ fullname }}</div>
@@ -51,34 +51,25 @@
 
   <ModalTailwind>
     <template v-slot:title>
-      <h3 class="font-bold text-lg">Create Task</h3>
+      <h3 class="font-bold text-2xl text-center">Create Task</h3>
     </template>
     <template v-slot:body>
-      formulario
+      <CreateTask></CreateTask>
     </template>
-    <template v-slot:actions>
-      <button class="btn">Close</button>
 
-    </template>
   </ModalTailwind>
 </template>
 
 <script setup>
 // <BtnLogout />
 import { ref, computed, reactive } from "vue";
-// import BtnLogout from "../buttons/BtnLogout.vue";
 
 const props = defineProps(['fullname', 'username'])
 
 import auth from '../../utils/auth'
 import ModalTailwind from "../ModalTailwind.vue";
+import CreateTask from "../forms/CreateTask.vue";
 
-const showModal = ref(false)
-
-const click = () => {
-  console.log(showModal.value ? 'Mostrar modal' : 'Esconder modals');
-
-}
 
 const logout = () => {
   auth.logout()

@@ -1,5 +1,5 @@
 <template>
-    <div class="mockup-window border bg-base-300">
+    <div class="mockup-window border bg-base-300 -z-10">
         <!-- <div class="flex justify-center px-4 py-16 bg-base-200">COMPLETED TASKS!</div> -->
         <div class="bg-base-200 py-5" :class="estilo">
             <div v-if="isLoading" class="place-self-center">
