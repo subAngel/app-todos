@@ -1,5 +1,5 @@
 <template>
-    <Navbar class="z-10" :fullname="user.fullname" :username="user.username" />
+    <Navbar :fullname="user.fullname" :username="user.username" />
 
     <main class="mx-auto w-10/12 pt-5 z-0">
         <div class="w-4/6 mx-auto flex items-center content-center justify-center mb-5">
@@ -35,6 +35,7 @@ onBeforeMount(() => {
     if (!$cookies.isKey('auth')) {
         router.push('/login')
     }
+    getUser()
 })
 
 function getUser() {
@@ -50,7 +51,7 @@ function getUser() {
 }
 
 onMounted(() => {
-    getUser()
+    // getUser()
 })
 
 

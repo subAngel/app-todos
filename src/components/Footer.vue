@@ -1,5 +1,5 @@
 <template>
-    <footer class="fixed bottom-0 footer items-center p-4 bg-neutral text-neutral-content">
+    <footer class="mt-10 bottom-0 z-20 footer items-center p-4 bg-neutral text-neutral-content">
         <div class="items-center grid-flow-col">
             <img src="../assets/vue.svg" alt="SVG Icon" />
             <p>Made with VueJs and NodeJs</p>

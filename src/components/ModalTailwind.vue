@@ -26,7 +26,6 @@ const props = defineProps({
 function clickListener(e) {
     if (e.target === modal.value) {
         emits('close')
-        // console.log('click en el modal');
     }
 }
 function closeOnEscapeListener(e) {
