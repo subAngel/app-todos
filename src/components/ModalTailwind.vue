@@ -29,13 +29,20 @@ function clickListener(e) {
         // console.log('click en el modal');
     }
 }
+function closeOnEscapeListener(e) {
+    if (e.key === 'Escape') {
+        emits('close')
+    }
+}
 
 onMounted(() => {
     window.addEventListener('click', clickListener)
+    window.addEventListener('keydown', closeOnEscapeListener)
 })
 
 onBeforeUnmount(() => {
     window.removeEventListener('click', clickListener)
+    window.removeEventListener('keydown', closeOnEscapeListener)
 })
 </script>
 
