@@ -61,7 +61,7 @@ const onSubmit = handleSubmit((values) => {
     }
     auth.createTask(token, values).then(res => {
         console.log("Task created");
-        $emit('closeModal')
+        emits('closeModal')
         clear()
     }).catch(err => {
         console.log(err);
