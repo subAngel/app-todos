@@ -1,6 +1,6 @@
 <template>
-    <form class="flex flex-col justify-center ">
-        <div class="form-control max-w-xs mx-auto w-4/5">
+    <form class="flex flex-col justify-center w-full">
+        <div class="form-control max-w-sm mx-auto w-11/12">
             <label class="text-gray-500 font-bold text-left pr-4 ">
                 Title
             </label>
@@ -10,7 +10,7 @@
             </label>
         </div>
 
-        <div class="form-control max-w-xs mx-auto w-4/5">
+        <div class="form-control max-w-sm mx-auto w-11/12">
             <label class="text-gray-500 font-bold text-left pr-4 ">
                 Task description
             </label>
@@ -18,7 +18,7 @@
             <label class="label h-6 ">
                 <span class="label-text-alt text-rose-600">{{ errors.description }}</span>
             </label>
-            <div class="modal-action">
+            <div class="flex justify-end gap-3">
                 <button class="btn btn-primary" @click.prevent="onSubmit()" :disabled="isSubmitting">{{ isSubmitting ?
                     'Creating...' : 'Create' }}</button>
                 <button class="btn" @click.prevent="clear">Clear</button>
