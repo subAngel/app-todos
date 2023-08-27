@@ -9,7 +9,7 @@
         </label>
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
-          <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+          <button class="btn" @click="toggleModal()">open modal</button>
 
         </ul>
       </div>
@@ -19,7 +19,7 @@
 
     <div class="navbar-center hidden lg:flex">
 
-      <button class="btn" onclick="my_modal_5.showModal()">Create Task</button>
+      <button class="btn" @click="toggleModal()">Create Task</button>
 
     </div>
 
@@ -49,13 +49,13 @@
     </div>
   </div>
 
-  <ModalTailwind>
+  <ModalTailwind :show="showCreateTaskModal">
     <template v-slot:title>
       <h3 class="font-bold text-2xl text-center">Create Task</h3>
     </template>
     <template #closeModal>
       <div class="float-right">
-        <button class="btn btn-ghost btn-circle">
+        <button class="btn btn-ghost btn-circle" @click="toggleModal()">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -74,6 +74,7 @@
 <script setup>
 // <BtnLogout />
 import { ref, computed, reactive } from "vue";
+import { useToggle } from '@vueuse/core'
 
 const props = defineProps(['fullname', 'username'])
 
@@ -81,6 +82,8 @@ import auth from '../../utils/auth'
 import ModalTailwind from "../ModalTailwind.vue";
 import CreateTask from "../forms/CreateTask.vue";
 
+// const showCreateTaskModal = ref(false)
+const [showCreateTaskModal, toggleModal] = useToggle()
 
 const logout = () => {
   auth.logout()
