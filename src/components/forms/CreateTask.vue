@@ -35,8 +35,8 @@ import { useForm } from "vee-validate";
 import * as yup from "yup";
 import auth from '../../utils/auth'
 
-// const title = ref("")
-// const description = ref("")
+const emits = defineEmits(['closeModal'])
+
 const completed = ref(false)
 const dueDate = ref(Date.now())
 
@@ -61,6 +61,7 @@ const onSubmit = handleSubmit((values) => {
     }
     auth.createTask(token, values).then(res => {
         console.log("Task created");
+        $emit('closeModal')
         clear()
     }).catch(err => {
         console.log(err);

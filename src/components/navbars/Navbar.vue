@@ -63,7 +63,7 @@
       </div>
     </template>
     <template v-slot:body>
-      <CreateTask>
+      <CreateTask @close-modal="toggleModal()">
 
       </CreateTask>
     </template>
