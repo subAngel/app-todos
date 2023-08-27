@@ -49,7 +49,7 @@
     </div>
   </div>
 
-  <ModalTailwind :show="showCreateTaskModal">
+  <ModalTailwind :show="showCreateTaskModal" @close="toggleModal()">
     <template v-slot:title>
       <h3 class="font-bold text-2xl text-center">Create Task</h3>
     </template>
