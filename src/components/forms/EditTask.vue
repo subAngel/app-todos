@@ -53,7 +53,8 @@ const { errors, handleSubmit, defineInputBinds, isSubmitting } = useForm({
 const onSubmit = handleSubmit((values) => {
     const editedTaskJSON = JSON.parse(JSON.stringify(editedTask.value))
     // console.log(editedTaskJSON);
-    auth.editTask(values.id, editedTaskJSON).then(res => {
+    const token = $cookies.get('auth')
+    auth.editTask(token, editedTaskJSON.id, editedTaskJSON).then(res => {
         console.log(res.data);
         toast.success('Task updated')
         emits('closeModal')

@@ -72,8 +72,12 @@ function createTask(token, data) {
 	})
 }
 
-function editTask(id, data) {
-	return axios.patch(`${api}/tasks/${id}`, data)
+function editTask(token, id, data) {
+	return axios.patch(`${api}/profile/my-tasks/${id}`, data, {
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	})
 }
 
 export default {
