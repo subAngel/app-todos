@@ -72,7 +72,11 @@ function createTask(token, data) {
 	})
 }
 
+function editTask(id, data) {
+	return axios.patch(`${api}/tasks/${id}`, data)
+}
+
 export default {
 	login, register, isAuthenticated, logout,
-	fetchUser, fetchTasks, fetchCompletedTasks, completeTask, createTask
+	fetchUser, fetchTasks, fetchCompletedTasks, completeTask, createTask, editTask
 };

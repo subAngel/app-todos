@@ -19,7 +19,7 @@
                 <span class="label-text-alt text-rose-600">{{ errors.description }}</span>
             </label>
             <div class="flex justify-end gap-3">
-                <button class="btn btn-primary" @click.prevent="onSubmit()" :disabled="isSubmitting">{{ isSubmitting ?
+                <button class="btn btn-primary" @click="onSubmit()" :disabled="isSubmitting">{{ isSubmitting ?
                     'Creating...' : 'Create' }}</button>
                 <button class="btn" @click.prevent="clear">Clear</button>
             </div>
