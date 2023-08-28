@@ -1,7 +1,7 @@
 <template>
-  <div class=" top-0 left-0 right-0 navbar bg-base-300 z-20">
+  <div class=" top-0 left-0 right-0 navbar bg-base-300 ">
     <div class="navbar-start">
-      <div class="dropdown z-20">
+      <div class="dropdown ">
         <label tabindex="0" class="btn btn-ghost lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
@@ -26,13 +26,13 @@
     <div class="navbar-end">
 
       <div class="dropdown dropdown-end">
-        <label tabindex="0" class="avatar hover:cursor-pointer">
+        <summary tabindex="0" class="avatar hover:cursor-pointer">
           <div class="w-10 rounded-full ring ring-success ring-offset-base-100 ring-offset-2 mr-4">
             <img src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146" />
           </div>
-        </label>
+        </summary>
 
-        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 -z-0 p-2 shadow bg-base-100 rounded-box w-52">
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
           <div class="text-center">
             <div class="font-bold">{{ username }}</div>
             <div class="text-sm opacity-50">{{ fullname }}</div>

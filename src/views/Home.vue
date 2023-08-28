@@ -1,7 +1,7 @@
 <template>
     <Navbar :fullname="user.fullname" :username="user.username" />
 
-    <main class="mx-auto w-10/12 pt-5 z-0">
+    <main class="mx-auto w-10/12 pt-7 z-0 min-h-screen">
         <div class="w-4/6 mx-auto flex items-center content-center justify-center mb-5">
             <router-link class=" w-1/3 text-center text-xl" :to="`/${$route.params.username}/tasks`">
                 <span>Tasks</span>
