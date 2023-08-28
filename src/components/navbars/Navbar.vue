@@ -33,10 +33,13 @@
         </summary>
 
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <div class="text-center">
-            <div class="font-bold">{{ username }}</div>
-            <div class="text-sm opacity-50">{{ fullname }}</div>
-          </div>
+          <li class="text-center">
+            <label class="font-bold">{{ username }}</label>
+            <span class="text-sm opacity-50">{{ fullname }}</span>
+          </li>
+          <li class="mt-3">
+            <SwapTheme></SwapTheme>
+          </li>
           <li class="mt-3">
             <a class="btn btn-info btn-xs text-xs capitalize ">
               Profile
@@ -81,6 +84,7 @@ const props = defineProps(['fullname', 'username'])
 import auth from '../../utils/auth'
 import ModalTailwind from "../ModalTailwind.vue";
 import CreateTask from "../forms/CreateTask.vue";
+import SwapTheme from "../buttons/SwapTheme.vue";
 
 // const showCreateTaskModal = ref(false)
 const [showCreateTaskModal, toggleModal] = useToggle()
