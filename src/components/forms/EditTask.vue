@@ -55,12 +55,12 @@ const onSubmit = handleSubmit((values) => {
     // console.log(editedTaskJSON);
     const token = $cookies.get('auth')
     auth.editTask(token, editedTaskJSON.id, editedTaskJSON).then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         toast.success('Task updated')
         emits('closeModal')
     }).catch(err => {
         toast.error("Error updating task")
-        console.log(err);
+        // console.log(err);
     })
 })
 
