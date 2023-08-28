@@ -33,10 +33,10 @@
         </summary>
 
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li class="text-center">
-            <label class="font-bold">{{ username }}</label>
-            <span class="text-sm opacity-50">{{ fullname }}</span>
-          </li>
+          <div class="text-center">
+            <div class="font-bold text-xl">{{ username }}</div>
+            <div class="text-sm opacity-50">{{ fullname }}</div>
+          </div>
           <li class="mt-3">
             <SwapTheme></SwapTheme>
           </li>

@@ -62,8 +62,8 @@ onMounted(() => {
     position: relative;
     height: 40px;
     padding: 0 26px;
-    border: 2px solid #000;
-    background: #e8e8e8;
+    border: 2px solid hsl(var(--bc));
+    background: hsl(var(--b1));
     user-select: none;
     white-space: nowrap;
     transition: all .05s linear;
@@ -74,7 +74,7 @@ onMounted(() => {
 .router-link-active:after {
     content: "";
     position: absolute;
-    background: #e8e8e8;
+    background: hsl(var(--b1));
     transition: all .2s linear;
 }
 
